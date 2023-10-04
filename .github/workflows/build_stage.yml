@@ -1,4 +1,4 @@
-name: DEV repo CI/CD
+name: STAGE repo CI/CD
 
 on:
     push:
