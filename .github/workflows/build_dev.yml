@@ -15,9 +15,6 @@ jobs:
             PROJECT_VARIABLE: ${{ vars.PROJECT_VARIABLE }}
         steps:
             - uses: actions/checkout@v3
-            - name: Set ENV variable
-              run: echo "ENV_NAME=dev" >> $GITHUB_ENV
-
             - name:  Running plan 
               run: |
                 echo "Secret: $PROJECT_SECRET"
@@ -32,9 +29,6 @@ jobs:
             PROJECT_VARIABLE: ${{ vars.PROJECT_VARIABLE }}
         steps:
             - uses: actions/checkout@v3
-            - name: Set ENV variable
-              run: echo "ENV_NAME=dev" >> $GITHUB_ENV
-
             - name:  Running apply 
               run: |
                 echo "Secret: $PROJECT_SECRET"
