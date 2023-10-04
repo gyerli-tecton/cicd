@@ -1,0 +1,36 @@
+name: DEV repo CI/CD
+
+on:
+    push:
+        branches: [stage]
+    pull_request:
+        branches: [stage]
+
+jobs:
+    plan:
+        runs-on: ubuntu-latest
+        environment: stage
+        env: 
+            PROJECT_SECRET: ${{ secrets.PROJECT_SECRET }}
+            PROJECT_VARIABLE: ${{ vars.PROJECT_VARIABLE }}
+        steps:
+            - uses: actions/checkout@v3
+            - name:  Running plan 
+              run: |
+                echo "Secret: $PROJECT_SECRET"
+                echo "Variable: $PROJECT_VARIABLE"
+    
+    apply:
+        runs-on: ubuntu-latest
+        environment: stage
+        needs: [plan]
+        env: 
+            PROJECT_SECRET: ${{ secrets.PROJECT_SECRET }}
+            PROJECT_VARIABLE: ${{ vars.PROJECT_VARIABLE }}
+        steps:
+            - uses: actions/checkout@v3
+            - name:  Running apply 
+              run: |
+                echo "Secret: $PROJECT_SECRET"
+                echo "Variable: $PROJECT_VARIABLE"
+
